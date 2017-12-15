@@ -53,6 +53,9 @@ utility methods to accomplish common tasks.
 If you experience that it’s difficult to implement something that
 seems simple then don’t hesitate to ask on <a href="javascript:window.gitter.chat.defaultChat.toggleChat(true)">gitter</a>.</p>
 
+<p>It’s possible to escape parts of a Patch with <code class="highlighter-rouge">// scalafix:ok</code>. If you want to treat
+a Patch as a transaction use <code class="highlighter-rouge">.atomic</code>.</p>
+
 <h2 id="lintmessage">LintMessage</h2>
 <p>Rules are able to emit “lint messages” with info/warn/error severity
 using <code class="highlighter-rouge">ctx.lint(lintCategory.at(String/Position)): Patch</code>.
