@@ -492,7 +492,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scalafix.util.TokenList#next" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scalafix.util.TokenList#next" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="next(token:scala.meta.tokens.Token):scala.meta.tokens.Token"></a><a id="next(Token):Token"></a>
       <span class="permalink">
       <a href="../../scalafix/util/TokenList.html#next(token:scala.meta.tokens.Token):scala.meta.tokens.Token" title="Permalink">
@@ -507,7 +507,10 @@
         <span class="name">next</span><span class="params">(<span name="token">token: <span class="extype" name="scala.meta.tokens.Token">Token</span></span>)</span><span class="result">: <span class="extype" name="scala.meta.tokens.Token">Token</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns the next/trailing token or the original token if none exists.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the next/trailing token or the original token if none exists.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>You need to guard against infinite recursion if iterating through
+      a list of tokens using this method. This method does not fail
+      with an exception.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
@@ -546,7 +549,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scalafix.util.TokenList#prev" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scalafix.util.TokenList#prev" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="prev(token:scala.meta.tokens.Token):scala.meta.tokens.Token"></a><a id="prev(Token):Token"></a>
       <span class="permalink">
       <a href="../../scalafix/util/TokenList.html#prev(token:scala.meta.tokens.Token):scala.meta.tokens.Token" title="Permalink">
@@ -561,7 +564,10 @@
         <span class="name">prev</span><span class="params">(<span name="token">token: <span class="extype" name="scala.meta.tokens.Token">Token</span></span>)</span><span class="result">: <span class="extype" name="scala.meta.tokens.Token">Token</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns the previous/leading token or the original token if none exists.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the previous/leading token or the original token if none exists.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>You need to guard against infinite recursion if iterating through
+      a list of tokens using this method. This method does not fail
+      with an exception.</p></span></dd></dl></div>
     </li><li name="scalafix.util.TokenList#slice" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="slice(from:scala.meta.tokens.Token,to:scala.meta.tokens.Token):Seq[scala.meta.tokens.Token]"></a><a id="slice(Token,Token):Seq[Token]"></a>
       <span class="permalink">
