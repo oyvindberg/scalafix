@@ -24,9 +24,11 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
     </ul>
   </li>
   <li><a href="#scalafix-core" id="markdown-toc-scalafix-core">scalafix-core</a></li>
+  <li><a href="#snapshot" id="markdown-toc-snapshot">SNAPSHOT</a></li>
 </ul>
 
 <h2 id="sbt-scalafix">sbt-scalafix</h2>
+
 <p>The sbt-plugin is the recommended integration to run semantic rules like RemoveUnusedImports or ExplicitResultTypes.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// ===&gt; project/plugins.sbt
@@ -58,6 +60,7 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
 </div>
 
 <h3 id="verify-installation">Verify installation</h3>
+
 <p>To verify the installation, check that scalacOptions and libraryDependecies
 contain the values below.</p>
 
@@ -71,6 +74,7 @@ contain the values below.</p>
 </div>
 
 <h3 id="example-project">Example project</h3>
+
 <p>For a minimal example project using sbt-scalafix, see the <a href="https://github.com/scalacenter/scalafix-sbt-example">scalacenter/scalafix-sbt-example</a> repository.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">olafurpg</span><span class="o">/</span><span class="n">scalafix</span><span class="o">-</span><span class="n">sbt</span><span class="o">-</span><span class="n">example</span>
@@ -135,12 +139,13 @@ contain the values below.</p>
 </table>
 
 <h3 id="semanticdb-sbt">semanticdb-sbt</h3>
+
 <p><strong>⚠️ Experimental</strong></p>
 
 <p>semanticdb-sbt is a Scala 2.10 compiler plugin that extracts semantic
 information from the sbt compiler.
-Note. semanticdb-sbt only works for *.scala files, it does not
-support *.sbt files.</p>
+Note. semanticdb-sbt only works for <code class="highlighter-rouge">*.scala</code> files, it does not
+support <code class="highlighter-rouge">*.sbt</code> files.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// project/plugins.sbt
 </span><span class="n">addCompilerPlugin</span><span class="o">(</span><span class="s">"org.scalameta"</span> <span class="o">%</span> <span class="s">"semanticdb-sbt"</span> <span class="o">%</span> <span class="s">"0.4.0"</span> <span class="n">cross</span> <span class="nc">CrossVersion</span><span class="o">.</span><span class="n">full</span><span class="o">)</span>
@@ -160,6 +165,7 @@ support *.sbt files.</p>
 <a href="https://github.com/coursier/coursier#command-line">coursier</a>.</p>
 
 <h3 id="coursier">Coursier</h3>
+
 <div class="language-sh highlighter-rouge"><pre class="highlight"><code>// coursier
 coursier bootstrap ch.epfl.scala:scalafix-cli_2.12.4:0.5.7 -f --main scalafix.cli.Cli -o scalafix
 ./scalafix --help
@@ -167,6 +173,7 @@ coursier bootstrap ch.epfl.scala:scalafix-cli_2.12.4:0.5.7 -f --main scalafix.cl
 </div>
 
 <h3 id="homebrew">Homebrew</h3>
+
 <div class="language-sh highlighter-rouge"><pre class="highlight"><code>// homebrew
 brew install --HEAD olafurpg/scalafmt/scalafix
 scalafix --help
@@ -174,6 +181,7 @@ scalafix --help
 </div>
 
 <h3 id="wget">wget</h3>
+
 <div class="language-sh highlighter-rouge"><pre class="highlight"><code>// wget
 wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?raw<span class="o">=</span><span class="nb">true</span>
 ./scalafix --help
@@ -183,7 +191,8 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 <p>Once the scalafix cli is installed, consult the –help page for further usage instructions.</p>
 
 <h3 id="help">–help</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.5.7-63-b0cf0bfa
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.5.7-67-5b643194
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -297,6 +306,7 @@ Exit status codes:
 
 </code></pre>
 </div>
+
 <h2 id="maven">Maven</h2>
 
 <p>It is possible to use scalafix with scala-maven-plugin but it requires a custom setup since there is no scalafix specific Maven plugin.</p>
@@ -375,6 +385,7 @@ For example, if your project is:</p>
 </div>
 
 <h2 id="scalafix-core">scalafix-core</h2>
+
 <p>Scalafix can be used as a library to run custom rules.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// ===&gt; build.sbt
@@ -406,6 +417,23 @@ For example, if your project is:</p>
 
 <p>The semantic API requires a more complicated setup.
 Please see <a href="/scalafix/docs/rule-authors/setup">Rule Authors</a>.</p>
+
+<h2 id="snapshot">SNAPSHOT</h2>
+
+<p>Our CI publishes a snapshot release to Sonatype on every merge into master.
+Each snapshot release has a unique version number, jars don’t get overwritten.
+To find the latest snapshot version number, go to <a href="https://oss.sonatype.org/content/repositories/snapshots/ch/epfl/scala/scalafix-core_2.12/">https://oss.sonatype.org/content/repositories/snapshots/ch/epfl/scala/scalafix-core_2.12/</a>
+and select the version number at the bottom, the one with the latest “Last Modified”.
+Once you have found the version number, adapting the version number</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
+resolvers += Resolver.sonatypeRepo("snapshots")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.5.7-67-5b643194-SNAPSHOT")
+
+// If using scalafix-cli, launch with coursier
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.5.7-67-5b643194-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+</code></pre>
+</div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });
