@@ -45,6 +45,13 @@ DisableSyntax.noSemicolons = true
 DisableSyntax.noXml = true
 DisableSyntax.noCovariantTypes = true
 DisableSyntax.noContravariantTypes = true
+DisableSyntax.regex = [
+  {
+    id = "offensive"
+    pattern = "[P|p]imp"
+    message = "Please consider a less offensive word such as Extension"
+  }
+]
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
