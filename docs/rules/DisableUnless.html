@@ -9,25 +9,35 @@ within the given “safe” blocks are banned again, to avoid leakage.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>By default, this rule does allows all symbols. To disallow a symbol in a block:</p>
+<p>By default, this rule does allows all symbols. To disallow symbols in a block:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>DisableUnless.symbols = [
   {
-    block = "scala.Option"
-    symbol = "dangerousFunction"
-    message = "the function may return null"
+      unless = "scala.Option"
+      symbols = [
+        {
+          symbol = "test.DisableUnless.dangerousFunction"
+          message = "the function may return null"
+        }
+        "test.DisableUnless.anotherFunction"
+      ]
   }
 ]
 </code></pre>
 </div>
-<p>Message is optional parameter and could be used to provide custom errors.</p>
+<p>You can use objects or regular strings to specify blocked symbols, 
+<code class="highlighter-rouge">message</code> is optional parameter and could be used to provide custom errors.</p>
 
 <h2 id="example">Example</h2>
 <p>With the given config:</p>
 <div class="highlighter-rouge"><pre class="highlight"><code>DisableUnless.symbols = [
   {
-    block = "test.Test.IO"
-    symbol = "scala.Predef.println"
-    message = "println has side-effects"
+      unless = "test.DisableUnless.IO"
+      symbols = [
+        {
+          symbol = "scala.Predef.println"
+          message = "println has side-effects"
+        }
+      ]
   }
 ]
 </code></pre>
