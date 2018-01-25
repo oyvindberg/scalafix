@@ -29,7 +29,17 @@
   <li>semicolons (<code class="highlighter-rouge">;</code>)</li>
   <li>tabs</li>
   <li>xml literals</li>
-  <li>covariant and contravariant type parameters</li>
+  <li>covariant and contravariant type parameters (<em>Since 0.5.8</em>)</li>
+  <li>default args in methods (<em>Since 0.5.8</em>)</li>
+  <li>val definitions in traits and abstract classes (<em>Since 0.5.8</em>)</li>
+  <li>implicit objects (<em>Since 0.5.8</em>)</li>
+  <li>implicit conversions (implicit def with non-implicit parameters) (<em>Since 0.5.8</em>)</li>
+</ul>
+
+<p>There’re also rules that rewrite syntax:</p>
+
+<ul>
+  <li>transforming <code class="highlighter-rouge">final val</code> to <code class="highlighter-rouge">val</code> (It breaks incremental compilation, see more <a href="https://github.com/sbt/zinc/issues/227">https://github.com/sbt/zinc/issues/227</a>) (<em>Since 0.5.8</em>)</li>
 </ul>
 
 <p>To disallow a syntax:</p>
@@ -45,6 +55,11 @@ DisableSyntax.noSemicolons = true
 DisableSyntax.noXml = true
 DisableSyntax.noCovariantTypes = true
 DisableSyntax.noContravariantTypes = true
+DisableSyntax.noDefaultArgs = true
+DisableSyntax.noValInAbstract = true
+DisableSyntax.noImplicitObject = true
+DisableSyntax.noImplicitConversion = true
+DisableSyntax.noFinalVal = true
 DisableSyntax.regex = [
   {
     id = "offensive"
