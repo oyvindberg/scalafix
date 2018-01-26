@@ -13,7 +13,7 @@ within the given “safe” blocks are banned again, to avoid leakage.</p>
 
 <h4 id="unlessconfig">UnlessConfig</h4>
 
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>unless</code></td><td>org.langmeta.Symbol.Global</td><td>The symbol that indicates a 'safe' block</td></tr><tr><td><code>symbols</code></td><td>List[scalafix.CustomMessage[org.langmeta.Symbol.Global]]</td><td>The unsafe that are banned unless inside a 'safe' block</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>unless</code></td><td>Symbol</td><td>The symbol that indicates a 'safe' block</td></tr><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>The unsafe that are banned unless inside a 'safe' block</td></tr></tbody></table>
 <h4 id="disableunlessconfig">DisableUnlessConfig</h4>
 
 <table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[UnlessConfig]</td><td>The list of disable unless configurations</td></tr></tbody></table>

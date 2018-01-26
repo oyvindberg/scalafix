@@ -2,30 +2,43 @@
 
 <p><em>Since 0.5.8</em></p>
 
-<p>This rule checks for or adds final modifier in the corresponding places.
-It has two use cases:</p>
-<ul>
-  <li>Reports an error on classes and traits that descend a sealed type but are not final.</li>
-  <li>Add <code class="highlighter-rouge">final</code> modifier to case classes.</li>
-</ul>
+<p>A rewrite and linter rule that makes sure <code class="highlighter-rouge">final</code> is used where appropriate.</p>
 
-<p>The first case disallows the following situation:</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>noLeakingSealed</code></td><td>Boolean</td><td>Report error on a missing `final` modifier for non-abstract classes that extend a sealed class.</td></tr><tr><td><code>noLeakingCaseClass</code></td><td>Boolean</td><td>Insert the final modifier to case classes.</td></tr></tbody></table>
+<h4 id="defaults">Defaults</h4>
 
-<p><code class="highlighter-rouge">file 1:</code></p>
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">t</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>MissingFinal.noLeakingSealed = true
+MissingFinal.noLeakingCaseClass = true
+</code></pre>
+</div>
+
+<h4 id="noleakingsealed">noLeakingSealed</h4>
+
+<p>A non-final class that extends a sealed trait can be extended from another file,
+causing the sealed trait to “leak”.
+See</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// file1.scala
+</span><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">t</span>
 <span class="k">trait</span> <span class="nc">a</span> <span class="k">extends</span> <span class="n">t</span> <span class="c1">// error: leaking sealed
 </span><span class="k">class</span> <span class="nc">c</span> <span class="k">extends</span> <span class="n">t</span> <span class="c1">// error: leaking sealed
+// file2.scala
+</span><span class="k">trait</span> <span class="nc">b</span> <span class="k">extends</span> <span class="n">a</span> <span class="c1">// error: leaking sealed
+</span><span class="k">class</span> <span class="nc">d</span> <span class="k">extends</span> <span class="n">c</span> <span class="c1">// error: leaking sealed
 </span></code></pre>
 </div>
 
-<p><code class="highlighter-rouge">file 2:</code></p>
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">b</span> <span class="k">extends</span> <span class="n">a</span> <span class="c1">// error: leaking sealed
-</span><span class="k">class</span> <span class="nc">d</span> <span class="k">extends</span> <span class="n">c</span> <span class="c1">// error: leaking sealed                  
-</span></code></pre>
-</div>
+<h4 id="noleakingcaseclass">noLeakingCaseClass</h4>
 
-<p>In the second case, for instance, 
-<code class="highlighter-rouge">case class A(a: Int)</code> is rewritten to <code class="highlighter-rouge">final case class A(a: Int)</code>.</p>
+<p>A non-final case class can have surprising behavior when extended.
+It is considered a best-practice to make all case classes final.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// before
+</span><span class="k">case</span> <span class="k">class</span> <span class="nc">A</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<span class="c1">// after
+</span><span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">A</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+</code></pre>
+</div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });

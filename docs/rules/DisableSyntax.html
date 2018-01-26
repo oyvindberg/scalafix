@@ -2,7 +2,9 @@
 
 <p><em>Since 0.5.4</em></p>
 
-<p>This rule reports errors when a “disallowed” syntax is used. This is a syntactic rule, which means it does not require compilation to run unlike the <code class="highlighter-rouge">Disable</code> rule.</p>
+<p>This rule reports errors when a “disallowed” syntax is used.
+This is a syntactic rule, which means it does not require compilation to
+run unlike the <code class="highlighter-rouge">Disable</code> rule.</p>
 
 <p>Example:</p>
 
@@ -20,55 +22,41 @@
 
 <h2 id="configuration">Configuration</h2>
 
-<p>By default, this rule does not disable syntax.</p>
+<p>By default, this rule does not disable any particular syntax,
+every setting is opt-in.</p>
 
-<p>It contains the following elements:</p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>keywords</code></td><td>Set[DisabledKeyword]</td><td>Report error on usage of a given set of keywords.</td></tr><tr><td><code>noSemicolons</code></td><td>Boolean</td><td>Report error on semicolon characters.</td></tr><tr><td><code>noTabs</code></td><td>Boolean</td><td>Report error on tab characters.</td></tr><tr><td><code>noXml</code></td><td>Boolean</td><td>Report error on xml literals.</td></tr><tr><td><code>noCovariantTypes</code></td><td>Boolean</td><td>Report error on covariant type parameters.</td></tr><tr><td><code>noContravariantTypes</code></td><td>Boolean</td><td>Report error on contravariant type parameters.</td></tr><tr><td><code>noDefaultArgs</code></td><td>Boolean</td><td>Report error on method parameters with default arguments.</td></tr><tr><td><code>noValInAbstract</code></td><td>Boolean</td><td>Report error on vals inside abstract class/trait.</td></tr><tr><td><code>noImplicitObject</code></td><td>Boolean</td><td>Report error on object with `implicit` modifier.</td></tr><tr><td><code>noImplicitConversion</code></td><td>Boolean</td><td>Report error on method that define an implicit conversion. </td></tr><tr><td><code>noFinalVal</code></td><td>Boolean</td><td>Remove `final` modifier for val definitions, see [motivation](https://github.com/sbt/zinc/issues/227)</td></tr><tr><td><code>noFinalize</code></td><td>Boolean</td><td>Reports error when finalize is overridden.</td></tr><tr><td><code>regex</code></td><td>List[Message[Pattern]]</td><td>Report error if the text contents of a source file matches a given regex.</td></tr></tbody></table>
+<h4 id="defaults">Defaults</h4>
 
-<ul>
-  <li>keywords such as: <code class="highlighter-rouge">null, throw, var, return</code></li>
-  <li>semicolons (<code class="highlighter-rouge">;</code>)</li>
-  <li>tabs</li>
-  <li>xml literals</li>
-  <li>covariant and contravariant type parameters (<em>Since 0.5.8</em>)</li>
-  <li>default args in methods (<em>Since 0.5.8</em>)</li>
-  <li>val definitions in traits and abstract classes (<em>Since 0.5.8</em>)</li>
-  <li>implicit objects (<em>Since 0.5.8</em>)</li>
-  <li>implicit conversions (implicit def with non-implicit parameters) (<em>Since 0.5.8</em>)</li>
-</ul>
+<div class="highlighter-rouge"><pre class="highlight"><code>DisableSyntax.keywords = []
+DisableSyntax.noSemicolons = false
+DisableSyntax.noTabs = false
+DisableSyntax.noXml = false
+DisableSyntax.noCovariantTypes = false
+DisableSyntax.noContravariantTypes = false
+DisableSyntax.noDefaultArgs = false
+DisableSyntax.noValInAbstract = false
+DisableSyntax.noImplicitObject = false
+DisableSyntax.noImplicitConversion = false
+DisableSyntax.noFinalVal = false
+DisableSyntax.noFinalize = false
+DisableSyntax.regex = []
+</code></pre>
+</div>
 
-<p>There’re also rules that rewrite syntax:</p>
+<h4 id="examples">Examples</h4>
 
-<ul>
-  <li>transforming <code class="highlighter-rouge">final val</code> to <code class="highlighter-rouge">val</code> (It breaks incremental compilation, see more <a href="https://github.com/sbt/zinc/issues/227">https://github.com/sbt/zinc/issues/227</a>) (<em>Since 0.5.8</em>)</li>
-</ul>
-
-<p>To disallow a syntax:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>DisableSyntax.keywords = [
-  var
-  null
-  return
-  throw
-]
-DisableSyntax.noTabs = true
-DisableSyntax.noSemicolons = true
-DisableSyntax.noXml = true
-DisableSyntax.noCovariantTypes = true
-DisableSyntax.noContravariantTypes = true
-DisableSyntax.noDefaultArgs = true
-DisableSyntax.noValInAbstract = true
-DisableSyntax.noImplicitObject = true
-DisableSyntax.noImplicitConversion = true
-DisableSyntax.noFinalVal = true
+<div class="highlighter-rouge"><pre class="highlight"><code>DisableSyntax.keywords = [return, null]
 DisableSyntax.regex = [
   {
     id = "offensive"
     pattern = "[P|p]imp"
-    message = "Please consider a less offensive word such as Extension"
+    message = "Please consider a less offensive word such as 'extension' or 'enrichment'"
   }
 ]
 </code></pre>
 </div>
+
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });

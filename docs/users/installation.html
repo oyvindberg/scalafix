@@ -37,24 +37,29 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
 <span class="c1">// ===&gt; sbt shell
 </span><span class="o">&gt;</span> <span class="n">scalafixEnable</span> <span class="c1">// Setup scalafix for active session.
 </span>                 <span class="c1">// Not needed if build.sbt is configured like below.
-</span><span class="o">&gt;</span> <span class="n">scalafix</span>                               <span class="c1">// Run all rules configured in .scalafix.conf
-</span><span class="o">&gt;</span> <span class="n">scalafix</span> <span class="nc">RemoveUnusedImports</span>           <span class="c1">// Run only RemoveUnusedImports rule
-</span><span class="o">&gt;</span> <span class="n">myProject</span><span class="o">/</span><span class="n">scalafix</span> <span class="nc">RemoveUnusedImports</span> <span class="c1">// Run rule in one project only
-</span><span class="o">&gt;</span> <span class="n">test</span><span class="k">:</span><span class="kt">scalafix</span> <span class="kt">RemoveUnusedImports</span>      <span class="c1">// Run rule in single configuration
-</span><span class="o">&gt;</span> <span class="n">scalafix</span> <span class="nc">ExplicitR</span><span class="o">&lt;</span><span class="nc">TAB</span><span class="o">&gt;</span>                <span class="c1">// Use tab completion
-</span><span class="o">&gt;</span> <span class="n">scalafix</span> <span class="n">replace</span><span class="k">:</span><span class="kt">com.foobar/com.buzbaz</span> <span class="c1">// Refactor (experimental)
-</span><span class="o">&gt;</span> <span class="n">scalafix</span> <span class="n">file</span><span class="k">:</span><span class="kt">rules/MyRule.scala</span>       <span class="c1">// Run local custom rule
-</span><span class="o">&gt;</span> <span class="n">scalafix</span> <span class="n">github</span><span class="k">:</span><span class="kt">org/repo/v1</span>            <span class="c1">// Run library migration rule
-</span><span class="o">&gt;</span> <span class="n">scalafixTest</span>                           <span class="c1">// Make sure no files needs to be fixed
-</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">&lt;</span><span class="nc">TAB</span><span class="o">&gt;</span>                      <span class="c1">// Powerful autocompletion based on the cli options
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span>                                            <span class="c1">// Run all rules configured in .scalafix.conf
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="nc">RemoveUnusedImports</span>                 <span class="c1">// Run only RemoveUnusedImports rule
+</span><span class="o">&gt;</span> <span class="n">myProject</span><span class="o">/</span><span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="nc">RemoveUnusedImports</span>       <span class="c1">// Run rule in one project only
+</span><span class="o">&gt;</span> <span class="n">test</span><span class="k">:</span><span class="kt">scalafixCli</span> <span class="kt">--rule</span> <span class="kt">RemoveUnusedImports</span>            <span class="c1">// Run rule in single configuration
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="nc">ExplicitR</span><span class="o">&lt;</span><span class="nc">TAB</span><span class="o">&gt;</span>                      <span class="c1">// Use tab completion
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="n">replace</span><span class="k">:</span><span class="kt">com.foobar/com.buzbaz</span>       <span class="c1">// Refactor (experimental)
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="n">file</span><span class="k">:</span><span class="kt">rules/MyRule.scala</span>             <span class="c1">// Run local custom rule
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">rule</span> <span class="n">github</span><span class="k">:</span><span class="kt">org/repo/v1</span>                  <span class="c1">// Run library migration rule
+</span><span class="o">&gt;</span> <span class="n">scalafixCli</span> <span class="o">--</span><span class="n">test</span>                                     <span class="c1">// Make sure no files needs to be fixed
 </span>
+
 <span class="c1">// (optional, to avoid need for scalafixEnable) permanently enable scalafix in build.sbt
 // ===&gt; build.sbt
 </span><span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">"2.12.4"</span> <span class="c1">// 2.11.12 is also supported.
 </span>
 <span class="c1">// If you get "-Yrangepos is required" error or "Missing compiler plugin semanticdb",
 // This setting must appear after scalacOptions and libraryDependencies.
-</span><span class="n">scalafixSettings</span>
+</span><span class="n">scalafixSettings</span> 
+<span class="c1">// or scalafixLibraryDependencies (Add semanticdb-scalac compiler plugin to libraryDependencies.)
+// &amp; scalacOptions bellow
+</span>
+<span class="c1">// Similarly for sbt builds
+</span><span class="n">sbtfixSettings</span>
 
 <span class="c1">// To configure for custom configurations like IntegrationTest
 </span><span class="n">scalafixConfigure</span><span class="o">(</span><span class="nc">Compile</span><span class="o">,</span> <span class="nc">Test</span><span class="o">,</span> <span class="nc">IntegrationTest</span><span class="o">)</span>
@@ -88,57 +93,22 @@ contain the values below.</p>
 
 <h3 id="settings-and-tasks">Settings and tasks</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">scalafix &lt;rule&gt;..</code></td>
-      <td><code class="highlighter-rouge">Unit</code></td>
-      <td>Run scalafix on project sources. See <a href="/scalafix/docs/users/rules">Rules</a> or use tab completion to explore supported rules.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">sbtfix &lt;rule&gt;..</code></td>
-      <td><code class="highlighter-rouge">Unit</code></td>
-      <td>Run scalafix on the build sources, <code class="highlighter-rouge">*.sbt</code> and <code class="highlighter-rouge">project/*</code>. <strong>Note</strong>: Only supports syntactic rules.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixSourceRoot</code></td>
-      <td><code class="highlighter-rouge">File</code></td>
-      <td>The root directory of this project.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixScalacOptions</code></td>
-      <td><code class="highlighter-rouge">Seq[String]</code></td>
-      <td>Necessary Scala compiler settings for scalafix to work.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixVersion</code></td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Which version of scalafix-cli to run.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixScalaVersion</code></td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Which Scala version of scalafix-cli to run.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixSemanticdbVersion</code></td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Which version of org.scalameta:semanticdb-scalac to run.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">scalafixVerbose</code></td>
-      <td><code class="highlighter-rouge">Boolean</code></td>
-      <td>If <code class="highlighter-rouge">true</code>, print out debug information.</td>
-    </tr>
-  </tbody>
-</table>
+<p>| Name                        | Type          | Description                                                                                                                               |
+| ————————— | ————- | ——————————————————————————————————————————————|
+| <code class="highlighter-rouge">scalafixCli &lt;args&gt;         | </code>Unit<code class="highlighter-rouge">        | Invoke scalafix command line interface directly. See [cli](/scalafix/docs/users/installation#cli) or use tab completion to explore supported arguments |
+| </code>scalafix <rule>..`         | `Unit`        | Run scalafix on project sources. See [Rules](/scalafix/docs/users/rules) or use tab completion to explore supported rules.                                |
+| `scalafixTest <rule>..`     | `Unit`        | Similar to the above task with the --test parameter                                                                                       |
+| `sbtfix <rule>..`           | `Unit`        | Run scalafix on the build sources, `*.sbt` and `project/*`. **Note**: Only supports syntactic rules.                                      |
+| `sbtfixTest <rule>..`       | `Unit`        | Similar to the above task with the --test parameter                                                                                       |
+| `scalafixConfig`            | `Option[File]`| .scalafix.conf file to specify which scalafix rules should run.                                                                           |
+| `scalafixScalacOptions`     | `Seq[String]` | Necessary Scala compiler settings for scalafix to work.                                                                                   |
+| `scalafixScalaVersion`      | `String`      | Which Scala version of scalafix-cli to run.                                                                                               |
+| `scalafixSemanticdbVersion` | `String`      | Which version of org.scalameta:semanticdb-scalac to run.                                                                                  |
+| `scalafixSourceRoot`        | `File`        | The root directory of this project.                                                                                                       |
+| `scalafixVerbose`           | `Boolean`     | If `true`, print out debug information.                                                                                                   |
+| `scalafixVersion`           | `String`      | Which version of scalafix-cli to run.                                                                                                     |
+| `scalafixEnabled`           | `Boolean`     | Deprecated. Use the scalafixEnable command or manually configure scalacOptions/libraryDependecies/scalaVersion                            |
+| `scalametaSourceroot`       | `File`        | Deprecated. Renamed to `scalafixSourceroot`                                                                                               |</rule></rule></rule></rule></p>
 
 <h3 id="semanticdb-sbt">semanticdb-sbt</h3>
 
@@ -194,7 +164,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.5.7-129-9bb3fc3f
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.5.7-139-2ab78c5c
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -430,10 +400,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.5.7-129-9bb3fc3f-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.5.7-139-2ab78c5c-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.5.7-129-9bb3fc3f-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.5.7-139-2ab78c5c-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({

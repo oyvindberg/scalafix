@@ -30,35 +30,32 @@ The convention is to keep a file <code class="highlighter-rouge">.scalafix.conf<
 Configuration is not needed or is optional for most rules, so you may not need to create a <code class="highlighter-rouge">.scalafix.conf</code>.</p>
 
 <h3 id="rules">rules</h3>
-<p>Configure which rule to run with <code class="highlighter-rouge">rules = [ ... ]</code>.
-Scalafix comes with a small set of built-in rules.</p>
+<p>Configure which rule to run with <code class="highlighter-rouge">rules = [ ... ]</code>, for example</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// Built in rules
 </span><span class="n">rules</span> <span class="k">=</span> <span class="o">[</span>
+  <span class="kt">//</span> <span class="kt">pre-installed</span> <span class="kt">rule</span> <span class="kt">from</span> <span class="kt">scalafix</span>
   <span class="kt">ExplicitResultTypes</span>
-  <span class="kt">RemoveUnusedImports</span>
-  <span class="kt">RemoveXmlLiterals</span>
-  <span class="kt">ProcedureSyntax</span>
-  <span class="kt">DottyVolatileLazyVal</span>
-  <span class="kt">ExplicitUnit</span>
-  <span class="kt">DottyVarArgPattern</span>
-  <span class="kt">NoAutoTupling</span>
-  <span class="kt">NoValInForComprehension</span>
-  <span class="kt">Sbt1</span>
-  <span class="kt">NoInfer</span>
-  <span class="kt">Disable</span>
-  <span class="kt">DisableSyntax</span>
-  <span class="kt">DisableUnless</span>
-  <span class="kt">MissingFinal</span>
-  <span class="kt">LeakingImplicitClassVal</span>
+  <span class="kt">//</span> <span class="kt">custom</span> <span class="kt">rule</span> <span class="kt">on</span> <span class="kt">local</span> <span class="kt">disk</span>
+  <span class="err">"</span><span class="kt">file:rules/MyRule.scala</span><span class="err">"</span>
+  <span class="kt">//</span> <span class="kt">custom</span> <span class="kt">rule</span> <span class="kt">from</span> <span class="kt">library</span> <span class="kt">on</span> <span class="kt">GitHub</span>
+  <span class="err">"</span><span class="kt">github:</span><span class="k">type</span><span class="kt">level/cats/v1.</span><span class="err">0</span><span class="kt">.</span><span class="err">0"</span>
+  <span class="kt">//</span> <span class="kt">custom</span> <span class="kt">rule</span> <span class="kt">shared</span> <span class="kt">as</span> <span class="kt">a</span> <span class="kt">gist</span>
+  <span class="err">"</span><span class="kt">https://git.io/vNXDG</span><span class="err">"</span>
+  <span class="kt">//</span> <span class="kt">...</span>
 <span class="o">]</span>
 </code></pre>
 </div>
 
-<p>You have several options to load custom rules.</p>
+<p>Rules are referenced using URI syntax.
+By default, a URI with no scheme such as <code class="highlighter-rouge">ExplicitResultTypes</code>
+is interpreted as a built-in Scalafix rule.
+See <a href="rules">here</a> for the complete list of built-in Scalafix rules.
+Scalafix supports loading custom rules with the following URI schemes:
+<code class="highlighter-rouge">class:</code>, <code class="highlighter-rouge">file:</code>, <code class="highlighter-rouge">http:</code> and <code class="highlighter-rouge">github:</code>.</p>
 
 <h4 id="class">class:</h4>
-<p>If a scalafix rule is already on the classpath, you can classload it with the <code class="highlighter-rouge">scala:</code> protocol.</p>
+<p>If a scalafix rule is already on the classpath, you can classload it with the <code class="highlighter-rouge">class:</code> protocol.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">rule</span> <span class="k">=</span> <span class="s">"class:scalafix.internal.rule.ProcedureSyntax"</span>
 </code></pre>
@@ -67,7 +64,7 @@ Scalafix comes with a small set of built-in rules.</p>
 <h4 id="file">file:</h4>
 <p>If a rule is written in a single file on local disk, you can load it with the <code class="highlighter-rouge">file:</code> protocol.</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">rule</span> <span class="k">=</span> <span class="s">"file:readme/MyRule.scala"</span> <span class="c1">// from local file
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">rule</span> <span class="k">=</span> <span class="s">"file:readme/MyRule.scala"</span> <span class="c1">// from local file on disk
 </span></code></pre>
 </div>
 
@@ -89,8 +86,6 @@ sharing your rule</p>
 </div>
 
 <h4 id="replace">replace:</h4>
-
-<p>⚠️ Experimental</p>
 
 <p>To replace usage of one class/object/trait/def with another.
 Note, does not move definitions like “Move” does in an IDE. This
