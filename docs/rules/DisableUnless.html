@@ -27,20 +27,22 @@ within the given “safe” blocks are banned again, to avoid leakage.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>DisableUnless.symbols = [
   {
-      unless = "com.IO"
-      symbols = [
-        {
-          symbol = "scala.Predef.println"
-          message = "println has side-effects"
-        }
-      ]
+    unless = "com.IO"
+    symbols = [
+      {
+        symbol = "scala.Predef.println"
+        message = "println has side-effects"
+       }
+    ]
   }
   {
-    unless = "scala.util.Try"
-    {
-      symbol = "scala.Option.get"
-      message = "the function may throw an exception"
-    }
+     unless = "scala.util.Try"
+     symbols = [
+       {
+          symbol = "scala.Option.get"
+          message = "the function may throw an exception"
+       }
+     ]
   }
 ]
 </code></pre>
