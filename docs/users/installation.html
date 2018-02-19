@@ -76,7 +76,7 @@ contain the values below.</p>
 </span><span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="o">*</span> <span class="o">-</span><span class="nc">Xplugin</span><span class="o">-</span><span class="n">require</span><span class="k">:</span><span class="kt">semanticdb</span>  <span class="c1">// recommended
 </span><span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="o">*</span> <span class="o">-</span><span class="n">P</span><span class="k">:</span><span class="kt">semanticdb:sourceroot:/x</span>  <span class="c1">// recommended
 </span><span class="o">&gt;</span> <span class="n">show</span> <span class="n">libraryDependencies</span>
-<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="o">*</span> <span class="n">org</span><span class="o">.</span><span class="n">scalameta</span><span class="k">:</span><span class="kt">semanticdb-scalac:</span><span class="err">3</span><span class="kt">.</span><span class="err">2</span><span class="kt">.</span><span class="err">0</span><span class="kt">:plugin-&gt;default</span><span class="o">(</span><span class="kt">compile</span><span class="o">)</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="o">*</span> <span class="n">org</span><span class="o">.</span><span class="n">scalameta</span><span class="k">:</span><span class="kt">semanticdb-scalac:</span><span class="err">3</span><span class="kt">.</span><span class="err">3</span><span class="kt">.</span><span class="err">1</span><span class="kt">:plugin-&gt;default</span><span class="o">(</span><span class="kt">compile</span><span class="o">)</span>
 </code></pre>
 </div>
 
@@ -185,7 +185,7 @@ Note. semanticdb-sbt only works for <code class="highlighter-rouge">*.scala</cod
 support <code class="highlighter-rouge">*.sbt</code> files.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// project/plugins.sbt
-</span><span class="n">addCompilerPlugin</span><span class="o">(</span><span class="s">"org.scalameta"</span> <span class="o">%</span> <span class="s">"semanticdb-sbt"</span> <span class="o">%</span> <span class="s">"0.5.0"</span> <span class="n">cross</span> <span class="nc">CrossVersion</span><span class="o">.</span><span class="n">full</span><span class="o">)</span>
+</span><span class="n">addCompilerPlugin</span><span class="o">(</span><span class="s">"org.scalameta"</span> <span class="o">%</span> <span class="s">"semanticdb-sbt"</span> <span class="o">%</span> <span class="s">"0.6.0"</span> <span class="n">cross</span> <span class="nc">CrossVersion</span><span class="o">.</span><span class="n">full</span><span class="o">)</span>
 </code></pre>
 </div>
 
@@ -229,7 +229,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-6-87d43dc0
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-9-dcaa5320
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -362,19 +362,19 @@ Exit status codes:
 <p>Coursier is a tool to download and launch library artifacts.
 Once you have coursier installed, assuming you are on 2.12.4:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>coursier fetch --intransitive org.scalameta:semanticdb-scalac_2.12.4:3.2.0
+<div class="highlighter-rouge"><pre class="highlight"><code>coursier fetch --intransitive org.scalameta:semanticdb-scalac_2.12.4:3.3.1
 </code></pre>
 </div>
 
-<p>You can also use <code class="highlighter-rouge">wget</code> or a simalar tool to retrieve the jar from <code class="highlighter-rouge">https://repo1.maven.org/maven2/org/scalameta/semanticdb-scalac_2.12.4/3.2.0/semanticdb-scalac_2.12.4-3.2.0-javadoc.jar</code>.</p>
+<p>You can also use <code class="highlighter-rouge">wget</code> or a simalar tool to retrieve the jar from <code class="highlighter-rouge">https://repo1.maven.org/maven2/org/scalameta/semanticdb-scalac_2.12.4/3.3.1/semanticdb-scalac_2.12.4-3.3.1-javadoc.jar</code>.</p>
 
 <h3 id="compile-sources-with-semanticdb">Compile sources with semanticdb</h3>
 
-<p>Let’s say the <code class="highlighter-rouge">semanticdb-scalac_2.12.4-3.2.0.jar</code> is available in <code class="highlighter-rouge">PLUGINS/semanticdb-scalac_2.12.4-3.2.0.jar</code> path on your file system.</p>
+<p>Let’s say the <code class="highlighter-rouge">semanticdb-scalac_2.12.4-3.3.1.jar</code> is available in <code class="highlighter-rouge">PLUGINS/semanticdb-scalac_2.12.4-3.3.1.jar</code> path on your file system.</p>
 
 <p>Recompile your project using <code class="highlighter-rouge">-DaddScalacArgs</code> as follow:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mvn clean test -DskipTests=true -DaddScalacArgs="-Yrangepos|-Xplugin-require:semanticdb|-Xplugin:PLUGIN/semanticdb-scalac_2.12.4-3.2.0.jar|-Ywarn-unused-import"
+<div class="highlighter-rouge"><pre class="highlight"><code>mvn clean test -DskipTests=true -DaddScalacArgs="-Yrangepos|-Xplugin-require:semanticdb|-Xplugin:PLUGIN/semanticdb-scalac_2.12.4-3.3.1.jar|-Ywarn-unused-import"
 </code></pre>
 </div>
 
@@ -383,7 +383,7 @@ The added flags for scala are given with the <code class="highlighter-rouge">add
 
 <ul>
   <li><code class="highlighter-rouge">-Yrangepos</code> is required for <code class="highlighter-rouge">semanticdb</code> to function properly,</li>
-  <li><code class="highlighter-rouge">-Xplugin:PLUGIN/semanticdb-scalac_2.12.4-3.2.0.jar</code> give the path where the <code class="highlighter-rouge">semanticdb</code> jar can be found,</li>
+  <li><code class="highlighter-rouge">-Xplugin:PLUGIN/semanticdb-scalac_2.12.4-3.3.1.jar</code> give the path where the <code class="highlighter-rouge">semanticdb</code> jar can be found,</li>
   <li>(optional) <code class="highlighter-rouge">-Xplugin-require:semanticdb</code> tells scalac to fails if it can’t load the <code class="highlighter-rouge">semanticdb</code> plugin,</li>
   <li>(optional) <code class="highlighter-rouge">-Ywarn-unused-import</code> is required for the <code class="highlighter-rouge">RemoveUnusedImports</code> rule. If you don’t run <code class="highlighter-rouge">RemoveUnusedImports</code> you can skip this flag. Consult the scalafix documentation for each rule to see which flags it requires.</li>
   <li>(optional) Customize the –sourceroot with <code class="highlighter-rouge">-P:semanticdb:sourceroot:/path/to/sourceroot</code> (more details below)</li>
@@ -466,10 +466,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-6-87d43dc0-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-9-dcaa5320-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-6-87d43dc0-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-9-dcaa5320-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
