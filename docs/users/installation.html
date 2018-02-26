@@ -23,6 +23,7 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
       <li><a href="#run-scalafix-cli" id="markdown-toc-run-scalafix-cli">Run scalafix-cli</a></li>
     </ul>
   </li>
+  <li><a href="#pants" id="markdown-toc-pants">Pants</a></li>
   <li><a href="#scalafix-core" id="markdown-toc-scalafix-core">scalafix-core</a></li>
   <li><a href="#snapshot" id="markdown-toc-snapshot">SNAPSHOT</a></li>
 </ul>
@@ -229,7 +230,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-9-dcaa5320
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-11-f297d97f
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -422,6 +423,10 @@ For example, if your project is:</p>
 </code></pre>
 </div>
 
+<h2 id="pants">Pants</h2>
+
+<p>Scalafix support is built into Pants and will run scalafmt after running scalafix rewrite rules to maintain your target formatting.  Usage instructions can be found at https://www.pantsbuild.org/scala.html</p>
+
 <h2 id="scalafix-core">scalafix-core</h2>
 
 <p>Scalafix can be used as a library to run custom rules.</p>
@@ -466,10 +471,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-9-dcaa5320-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-11-f297d97f-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-9-dcaa5320-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-11-f297d97f-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
