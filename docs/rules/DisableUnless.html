@@ -11,43 +11,6 @@ within the given “safe” blocks are banned again, to avoid leakage.</p>
 
 <p>By default, this rule does allows all symbols.</p>
 
-<h4 id="unlessconfig">UnlessConfig</h4>
-
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>unless</code></td><td>Symbol</td><td>The symbol that indicates a 'safe' block</td></tr><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>The unsafe that are banned unless inside a 'safe' block</td></tr></tbody></table>
-<h4 id="disableunlessconfig">DisableUnlessConfig</h4>
-
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[UnlessConfig]</td><td>The list of disable unless configurations</td></tr></tbody></table>
-<h4 id="defaults">Defaults</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>DisableUnless.symbols = []
-</code></pre>
-</div>
-
-<h4 id="examples">Examples</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>DisableUnless.symbols = [
-  {
-    unless = "com.IO"
-    symbols = [
-      {
-        symbol = "scala.Predef.println"
-        message = "println has side-effects"
-       }
-    ]
-  }
-  {
-     unless = "scala.util.Try"
-     symbols = [
-       {
-          symbol = "scala.Option.get"
-          message = "the function may throw an exception"
-       }
-     ]
-  }
-]
-</code></pre>
-</div>
-
 <p>The the example configuration above, Scalafix will report the following warnings:</p>
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com</span>
 
@@ -74,6 +37,10 @@ within the given “safe” blocks are banned again, to avoid leakage.</p>
 <span class="o">}</span>
 </code></pre>
 </div>
+
+<p><em>Since 0.6.0</em></p>
+
+<p>NOTE. This rule is deprecated and from v0.6.0 onwards will be merged into the <a href="/scalafix/docs/rules/Disable">Disable</a> rule.</p>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });

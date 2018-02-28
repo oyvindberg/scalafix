@@ -16,7 +16,7 @@
 
 <p>This rule has several different options.</p>
 
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>The list of symbols to disable.</td></tr></tbody></table>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[scalafix.CustomMessage[org.langmeta.Symbol.Global]]</td><td>The list of symbols to disable.</td></tr></tbody></table>
 <h4 id="defaults">Defaults</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>Disable.symbols = []
@@ -41,6 +41,94 @@
 </code></pre>
 </div>
 
+<p><em>Since 0.6.0</em></p>
+
+<p>This rule reports errors when a “disallowed” symbol is referenced.</p>
+
+<p>It has several different modes:</p>
+<ul>
+  <li>Default mode. In this mode symbols are banned in the actual source code.</li>
+  <li><code class="highlighter-rouge">unlessInsideBlock</code>
+In this mode rule bans usages of “disallowed” symbols unless they appear in a “safe” block.
+Any inner blocks (e.g. anonymous functions or classes)
+within the given “safe” blocks are banned again, to avoid leakage.</li>
+  <li><code class="highlighter-rouge">ifSynthetic</code> This mode allows to block symbols in the generated code,
+for example expanded macros.</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nc">MyCode</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">7</span><span class="kt">:</span> <span class="kt">error:</span> <span class="err">[</span><span class="kt">DisallowSymbol.asInstanceOf</span><span class="err">]</span> <span class="kt">asInstanceOf</span> <span class="kt">is</span> <span class="kt">disabled.</span>
+  <span class="kt">myValue.asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+          <span class="o">^</span>
+</code></pre>
+</div>
+
+<h2 id="configuration-1">Configuration</h2>
+
+<p>This rule has several different options.</p>
+
+<h4 id="unlessinsideblock">UnlessInsideBlock</h4>
+
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>safeBlock</code></td><td>Symbol</td><td>The symbol that indicates a 'safe' block.</td></tr><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>The unsafe symbols that are banned unless inside a 'safe' block</td></tr></tbody></table>
+<h4 id="disableconfig">DisableConfig</h4>
+
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>List of symbols to disable if written explicitly in source. Does not report an error for inferred symbols in macro expanded code or implicits.</td></tr><tr><td><code>ifSynthetic</code></td><td>List[Message[Symbol]]</td><td>List of symbols to disable if inferred. Does not report an error for symbols written explicitly in source code.</td></tr><tr><td><code>unlessInside</code></td><td>List[UnlessInsideBlock]</td><td>List of symbols to disable unless they are in the given block.</td></tr></tbody></table>
+<h4 id="defaults-1">Defaults</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DisableConfig.symbols = []
+DisableConfig.ifSynthetic = []
+DisableConfig.unlessInside = []
+</code></pre>
+</div>
+
+<h4 id="examples-1">Examples</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DisableConfig.symbols = 
+[
+  {
+    symbol = "scala.Any.asInstanceOf"
+    message = "use pattern-matching instead"
+  }
+]
+DisableConfig.ifSynthetic = 
+[
+  {
+    symbol = "scala.Predef.any2stringadd"
+    message = "use explicit toString be calling +"
+  }
+]
+DisableConfig.unlessInside = 
+[
+  {
+    safeBlock = "scala.util.Try"
+    symbols = [
+      {
+        symbol = "scala.Option.get"
+        message = "the function may throw an exception"
+      }
+    ]
+  }
+]
+      
+</code></pre>
+</div>
+
+<p>The the example configuration above, Scalafix will report the following warnings:</p>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.util.Try</span>
+
+<span class="k">object</span> <span class="nc">Test</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">z</span> <span class="k">=</span> <span class="mf">1.</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="c1">// default mode, not ok
+</span>
+  <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="s">"any2stringadd"</span> <span class="c1">// ifSynthetic mode, not ok
+</span>
+  <span class="nc">Option</span><span class="o">.</span><span class="n">empty</span><span class="o">[</span><span class="kt">Int</span><span class="o">].</span><span class="n">get</span> <span class="c1">//  unlessInsideBlock mode, not ok
+</span>  <span class="nc">Try</span> <span class="o">{</span>
+    <span class="nc">Option</span><span class="o">.</span><span class="n">empty</span><span class="o">[</span><span class="kt">Int</span><span class="o">].</span><span class="n">get</span> <span class="c1">// ok
+</span>  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });
