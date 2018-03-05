@@ -7,7 +7,6 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
       <li><a href="#verify-installation" id="markdown-toc-verify-installation">Verify installation</a></li>
       <li><a href="#example-project" id="markdown-toc-example-project">Example project</a></li>
       <li><a href="#settings-and-tasks" id="markdown-toc-settings-and-tasks">Settings and tasks</a></li>
-      <li><a href="#semanticdb-sbt" id="markdown-toc-semanticdb-sbt">semanticdb-sbt</a></li>
     </ul>
   </li>
   <li><a href="#scalafix-cli" id="markdown-toc-scalafix-cli">scalafix-cli</a>    <ul>
@@ -59,9 +58,6 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
 <span class="c1">// or scalafixLibraryDependencies (Add semanticdb-scalac compiler plugin to libraryDependencies.)
 // &amp; scalacOptions bellow
 </span>
-<span class="c1">// Similarly for sbt builds
-</span><span class="n">sbtfixSettings</span>
-
 <span class="c1">// To configure for custom configurations like IntegrationTest
 </span><span class="n">scalafixConfigure</span><span class="o">(</span><span class="nc">Compile</span><span class="o">,</span> <span class="nc">Test</span><span class="o">,</span> <span class="nc">IntegrationTest</span><span class="o">)</span>
 </code></pre>
@@ -119,16 +115,6 @@ contain the values below.</p>
       <td>Similar to the above task with the –test parameter</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">sbtfix &lt;rule&gt;..</code></td>
-      <td><code class="highlighter-rouge">Unit</code></td>
-      <td>Run scalafix on the build sources, <code class="highlighter-rouge">*.sbt</code> and <code class="highlighter-rouge">project/*</code>. <strong>Note</strong>: Only supports syntactic rules.</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">sbtfixTest &lt;rule&gt;..</code></td>
-      <td><code class="highlighter-rouge">Unit</code></td>
-      <td>Similar to the above task with the –test parameter</td>
-    </tr>
-    <tr>
       <td><code class="highlighter-rouge">scalafixConfig</code></td>
       <td><code class="highlighter-rouge">Option[File]</code></td>
       <td>.scalafix.conf file to specify which scalafix rules should run.</td>
@@ -176,27 +162,6 @@ contain the values below.</p>
   </tbody>
 </table>
 
-<h3 id="semanticdb-sbt">semanticdb-sbt</h3>
-
-<p><strong>⚠️ Experimental</strong></p>
-
-<p>semanticdb-sbt is a Scala 2.10 compiler plugin that extracts semantic
-information from the sbt compiler.
-Note. semanticdb-sbt only works for <code class="highlighter-rouge">*.scala</code> files, it does not
-support <code class="highlighter-rouge">*.sbt</code> files.</p>
-
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// project/plugins.sbt
-</span><span class="n">addCompilerPlugin</span><span class="o">(</span><span class="s">"org.scalameta"</span> <span class="o">%</span> <span class="s">"semanticdb-sbt"</span> <span class="o">%</span> <span class="s">"0.6.0"</span> <span class="n">cross</span> <span class="nc">CrossVersion</span><span class="o">.</span><span class="n">full</span><span class="o">)</span>
-</code></pre>
-</div>
-
-<p>Once enabled, you can run scalafix rules against <code class="highlighter-rouge">project/*.scala</code>:</p>
-
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">reload</span> <span class="c1">// rebuild semanticdb for project/*.scala sources
-</span><span class="o">&gt;</span> <span class="n">sbtfix</span> <span class="nc">Sbt1</span>
-</code></pre>
-</div>
-
 <h2 id="scalafix-cli">scalafix-cli</h2>
 
 <p>The recommended way to install the scalafix command-line interface is with
@@ -230,7 +195,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-33-e71192ec
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-35-67a1f287
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -471,10 +436,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-33-e71192ec-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-35-67a1f287-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-33-e71192ec-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-35-67a1f287-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
