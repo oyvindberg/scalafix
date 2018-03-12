@@ -1,35 +1,29 @@
 <html><head><title>scalafix: Configuration</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="ch.epfl.scala" /><meta name="description" content="Rewrite and linting tool for Scala" /><meta name="og:image" content="/scalafix/img/poster.png" /><meta name="og:title" content="scalafix: Configuration" /><meta name="og:site_name" content="scalafix" /><meta name="og:url" content="https://scalacenter.github.io/scalafix/" /><meta name="og:type" content="website" /><meta name="og:description" content="Rewrite and linting tool for Scala" /><link rel="icon" type="image/png" href="/scalafix/img/favicon.png" /><meta name="twitter:title" content="scalafix: Configuration" /><meta name="twitter:image" content="https://scalacenter.github.io/scalafix/img/poster.png" /><meta name="twitter:description" content="Rewrite and linting tool for Scala" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:creator" content="@scala_lang" /><link rel="icon" type="image/png" sizes="16x16" href="/scalafix/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalafix/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalafix/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalafix/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalafix/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalafix/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalafix/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalafix/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalafix/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalafix/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalafix/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalafix/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalafix/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalafix/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalafix/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalafix/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalafix/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalafix/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalafix/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalafix/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalafix/highlight/styles/atom-one-light.css" /><link rel="stylesheet" href="/scalafix/css/style.css" /><link rel="stylesheet" href="/scalafix/css/palette.css" /><link rel="stylesheet" href="/scalafix/css/codemirror.css" /><link rel="stylesheet" href="/scalafix/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalafix/" class="brand"><div class="brand-wrapper"><span>scalafix</span></div></a></li> <li><a href="/scalafix/docs/users/installation" class="">Users</a> <ul class="sub_section"> <li><a href="/scalafix/docs/users/installation" class="">Installation</a></li> <li><a href="/scalafix/docs/users/rules" class="">Rules</a></li> <li><a href="/scalafix/docs/users/configuration" class=" active ">Configuration</a></li> <li><a href="/scalafix/docs/users/faq" class="">FAQ</a></li></ul></li> <li><a href="/scalafix/docs/rule-authors/setup" class="">Rule Authors</a> <ul class="sub_section"> <li><a href="/scalafix/docs/rule-authors/setup" class="">Setup</a></li> <li><a href="/scalafix/docs/rule-authors/tutorial" class="">Tutorial</a></li> <li><a href="/scalafix/docs/rule-authors/glossary" class="">Glossary</a></li> <li><a href="/scalafix/docs/api/scalafix/" class="">API Docs</a></li></ul></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li id="gh-eyes-item" class="hidden-xs"><a href="https://github.com/scalacenter/scalafix"><i class="fa fa-eye"></i><span>WATCH<span id="eyes" class="label label-default">--</span></span></a></li><li id="gh-stars-item" class="hidden-xs"><a href="https://github.com/scalacenter/scalafix"><i class="fa fa-star-o"></i><span>STARS<span id="stars" class="label label-default">--</span></span></a></li><li><a href="#" onclick="shareSiteTwitter('scalafix Rewrite and linting tool for Scala');"><i class="fa fa-twitter"></i></a></li><li><a href="#" onclick="shareSiteFacebook('scalafix Rewrite and linting tool for Scala');"><i class="fa fa-facebook"></i></a></li><li><a href="#" onclick="shareSiteGoogle();"><i class="fa fa-google-plus"></i></a></li></ul></div></div></div></div><div id="content" data-github-owner="scalacenter" data-github-repo="scalafix"><div class="content-wrapper"><section><h1 class="no_toc" id="configuration">Configuration</h1>
 
-<ul id="markdown-toc">
-  <li><a href="#per-project" id="markdown-toc-per-project">Per project</a>    <ul>
-      <li><a href="#rules" id="markdown-toc-rules">rules</a>        <ul>
-          <li><a href="#class" id="markdown-toc-class">class:</a></li>
-          <li><a href="#file" id="markdown-toc-file">file:</a></li>
-          <li><a href="#http" id="markdown-toc-http">http:</a></li>
-          <li><a href="#github" id="markdown-toc-github">github:</a></li>
-          <li><a href="#replace" id="markdown-toc-replace">replace:</a></li>
-        </ul>
-      </li>
-      <li><a href="#lint" id="markdown-toc-lint">lint</a></li>
-      <li><a href="#patches" id="markdown-toc-patches">patches</a></li>
-    </ul>
-  </li>
-  <li><a href="#per-source-file" id="markdown-toc-per-source-file">Per source file</a>    <ul>
-      <li><a href="#enable-or-disable-until-the-end-of-file" id="markdown-toc-enable-or-disable-until-the-end-of-file">Enable or Disable until the end of file</a></li>
-      <li><a href="#disable-for-an-expression" id="markdown-toc-disable-for-an-expression">Disable for an expression</a></li>
-      <li><a href="#selectively-disabling-rules" id="markdown-toc-selectively-disabling-rules">Selectively disabling rules</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="per-project">Per project</h2>
-
 <p>Scalafix reads configuration from a file using
 <a href="https://github.com/typesafehub/config">HOCON</a> syntax.
 The convention is to keep a file <code class="highlighter-rouge">.scalafix.conf</code> into the root directory of your project.
 Configuration is not needed or is optional for most rules, so you may not need to create a <code class="highlighter-rouge">.scalafix.conf</code>.</p>
 
-<h3 id="rules">rules</h3>
+<ul id="markdown-toc">
+  <li><a href="#rules" id="markdown-toc-rules">rules</a>    <ul>
+      <li><a href="#class" id="markdown-toc-class">class:</a></li>
+      <li><a href="#file" id="markdown-toc-file">file:</a></li>
+      <li><a href="#http" id="markdown-toc-http">http:</a></li>
+      <li><a href="#github" id="markdown-toc-github">github:</a></li>
+      <li><a href="#replace" id="markdown-toc-replace">replace:</a></li>
+    </ul>
+  </li>
+  <li><a href="#lint" id="markdown-toc-lint">lint</a></li>
+  <li><a href="#patches" id="markdown-toc-patches">patches</a></li>
+  <li><a href="#suppressing-rules" id="markdown-toc-suppressing-rules">Suppressing rules</a>    <ul>
+      <li><a href="#suppresswarnings-annotation" id="markdown-toc-suppresswarnings-annotation"><code class="highlighter-rouge">@SuppressWarnings</code> annotation</a></li>
+      <li><a href="#comments" id="markdown-toc-comments">Comments</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="rules">rules</h2>
 <p>Configure which rule to run with <code class="highlighter-rouge">rules = [ ... ]</code>, for example</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// Built in rules
@@ -102,7 +96,7 @@ only moves use-sites.</p>
 </code></pre>
 </div>
 
-<h3 id="lint">lint</h3>
+<h2 id="lint">lint</h2>
 <p>Override the default severity level of a <a href="/scalafix/docs/rule-authors/glossary#lintmessage">LintMessage</a> with <code class="highlighter-rouge">lint</code></p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// Assuming 'Foo' is a rule and 'warningID'/'errorID' are LintCategory IDs.
@@ -114,7 +108,7 @@ only moves use-sites.</p>
 </span></code></pre>
 </div>
 
-<h3 id="patches">patches</h3>
+<h2 id="patches">patches</h2>
 <p>For simple use-cases, it’s possible to write custom rules directly in <code class="highlighter-rouge">.scalafix.conf</code>.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">patches</span><span class="o">.</span><span class="n">removeGlobalImports</span> <span class="k">=</span> <span class="o">[</span>
@@ -134,32 +128,77 @@ only moves use-sites.</p>
 
 <p>To build custom rules see <a href="/scalafix/docs/rule-authors/setup">Rule Authors</a>.</p>
 
-<h2 id="per-source-file">Per source file</h2>
+<h2 id="suppressing-rules">Suppressing rules</h2>
 
-<p>It’s possible to supress false positives linter message over source file regions using comments. This provides fine grained control over what to report</p>
+<p>Sometimes there are legitimate reasons for violating a given rule. In order to cater for that, Scalafix provides 
+two methods for suppressing rules over a particular region of code.</p>
 
-<p>There are two alternative way to supress linter messages with a single expression using scalafix:ok or with scalafix:off/on to toogle until the end of file.</p>
+<p> </p>
 
-<h3 id="enable-or-disable-until-the-end-of-file">Enable or Disable until the end of file</h3>
+<h4 id="suppresswarnings-annotation"><code class="highlighter-rouge">@SuppressWarnings</code> annotation</h4>
+<p>The <code class="highlighter-rouge">java.lang.SupppressWarnings</code> is a standard way to suppress messages from the compiler and is used by many linters. 
+Scalafix supports this annotation in any definition where the Scala language allows it to be placed (classes, traits, 
+objects, types, methods, constructors, parameters, vals and vars).</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code>
-<span class="c1">// scalafix:off
-</span><span class="n">foo</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
-<span class="mf">1.</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
-<span class="c1">// scalafix:on
-</span>
+<p>One or more rules can be specified in the <code class="highlighter-rouge">@SuppressWarnings</code> annotation. Although not mandatory, it’s recommended
+to prefix the rule names with <code class="highlighter-rouge">scalafix:</code> so that they can be easily identified. Another reason for prefixing is that 
+Scalafix can report warnings for unused/redundant rules.</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"scalafix:Disable.null"</span><span class="o">,</span> <span class="s">"scalafix:Disable.asInstanceOf"</span><span class="o">))</span>
+<span class="k">def</span> <span class="n">foo</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">foo</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+    <span class="mf">1.</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
-<h3 id="disable-for-an-expression">Disable for an expression</h3>
+<p>A convenient way to disable all rules is to inform the standard keyword <code class="highlighter-rouge">all</code> in the annotation:</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"all"</span><span class="o">))</span>
+<span class="k">def</span> <span class="n">foo</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">foo</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+    <span class="mf">1.</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The <code class="highlighter-rouge">@SuppressWarnings</code> annotation is detected without compilation. Any annotation matching the syntax 
+<code class="highlighter-rouge">@SuppressWarnings(..)</code> regardless if it’s <code class="highlighter-rouge">java.lang.SupressWarnings</code> or not will trigger the suppression mechanism. 
+This is done in order to support <code class="highlighter-rouge">@SuppressWarnings</code> for syntactic rules like <code class="highlighter-rouge">DisableSyntax</code>.</p>
+
+<p> </p>
+
+<h4 id="comments">Comments</h4>
+
+<p>Comments allow code to be targeted more precisely than annotations. It’s possible to target from a single line of code to a 
+region (e.g. a group of methods) or the entire source file. Moreover, there are things that simply cannot be annotated 
+in Scala (e.g. a class name: you would have to disable the rule for the entire class). For such scenarios, comments 
+can be the best or the only choice.</p>
+
+<p>There are two alternatives to suppress rules via comments: single expression using <code class="highlighter-rouge">scalafix:ok</code> and regions using the 
+<code class="highlighter-rouge">scalafix:off</code>/<code class="highlighter-rouge">scalafix:on</code> toggles.</p>
+
+<ul>
+  <li>single expression</li>
+</ul>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">""</span><span class="o">)</span> <span class="c1">// scalafix:ok
 </span></code></pre>
 </div>
 
-<h3 id="selectively-disabling-rules">Selectively disabling rules</h3>
+<ul>
+  <li>region</li>
+</ul>
 
-<p>Both technique above can selectively disable a list of rules. You can provide the list of rules to be disabled, separated by <code class="highlighter-rouge">,</code>.</p>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// scalafix:off
+</span><span class="n">foo</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+<span class="mf">1.</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<span class="c1">// scalafix:on
+</span></code></pre>
+</div>
+
+<p>Both techniques can selectively disable a list of rules. You can provide the list of rules to be disabled separated by 
+commas:</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="c1">// scalafix:off Disable.null, Disable.asInstanceOf
 </span><span class="n">foo</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
@@ -170,6 +209,21 @@ only moves use-sites.</p>
 
 <div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">""</span><span class="o">)</span> <span class="c1">// scalafix:ok NoInfer.any
 </span></code></pre>
+</div>
+
+<p> </p>
+
+<p><strong>Note:</strong> Suppression via comments and <code class="highlighter-rouge">@SuppressWarnings</code> can be combined in the same source file. Be mindful not to 
+introduce overlaps between the two as it can cause confusion and counter-intuitive behavior. Scalafix handles overlaps 
+by giving precedence to the <code class="highlighter-rouge">@SuppressWarnings</code> annotation:</p>
+
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"scalafix:Disable.null"</span><span class="o">))</span>
+<span class="k">def</span> <span class="n">overlap</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="kc">null</span>
+  <span class="c1">// scalafix:on Disable.null
+</span>  <span class="k">val</span> <span class="n">b</span> <span class="k">=</span> <span class="kc">null</span> <span class="c1">// rule is still disabled because the annotation takes precedence over the comment
+</span><span class="o">}</span>
+</code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
