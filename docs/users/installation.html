@@ -195,7 +195,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-59-be8cf712
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-66-e46a0401
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -232,6 +232,9 @@ Usage: scalafix [options] [&lt;file&gt;...]
         If set, print fix to stdout instead of writing to file.
   --test  
         Exit non-zero code if files have not been fixed. Won't write to files.
+  --auto-suppress-linter-errors  
+        Write to files. In case of linter error adds a comment to suppress the
+	error.
   --out-from  &lt;/shared/&gt;
         Regex that is passed as first argument to
 	fileToFix.replaceAll(outFrom, outTo)
@@ -436,10 +439,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-59-be8cf712-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-66-e46a0401-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-59-be8cf712-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-66-e46a0401-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
