@@ -195,7 +195,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-69-89ef2f67
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-71-752acc8e
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -271,7 +271,7 @@ Usage: scalafix [options] [&lt;file&gt;...]
         If set, only apply scalafix to added and edited files in git diff
 	against a provided branch, commit or tag. (defaults to master)
   --format  &lt;value&gt;
-Available rules: DottyKeywords, DisableSyntax, NoFinalize, NoValInForComprehension, RemoveXmlLiterals, LeakingImplicitClassVal, VolatileLazyVal, ProcedureSyntax, ExplicitUnit, DottyVolatileLazyVal, DottyVarArgPattern, NoInfer, Sbt1, ExplicitResultTypes, ExplicitReturnTypes, RemoveUnusedImports, RemoveUnusedTerms, NoAutoTupling, Disable, MissingFinal
+Available rules: DottyKeywords, DisableSyntax, NoFinalize, NoValInForComprehension, RemoveXmlLiterals, LeakingImplicitClassVal, VolatileLazyVal, ProcedureSyntax, ExplicitUnit, DottyVolatileLazyVal, DottyVarArgPattern, NoInfer, ExplicitResultTypes, ExplicitReturnTypes, RemoveUnusedImports, RemoveUnusedTerms, NoAutoTupling, Disable, MissingFinal
 
 NOTE. The command line tool is mostly intended to be invoked programmatically
 from build-tool integrations such as sbt-scalafix. The necessary fixture to run
@@ -439,10 +439,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-69-89ef2f67-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-71-752acc8e-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-69-89ef2f67-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-71-752acc8e-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
