@@ -158,12 +158,7 @@
             Linear Supertypes
           </span>
           <div class="superTypes hiddenContent"><a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
-        </div><div class="toggleContainer block">
-            <span class="toggle">
-              Known Subclasses
-            </span>
-            <div class="subClasses hiddenContent"><a href="../rewrite/SemanticRewrite.html" class="extype" name="scalafix.rewrite.SemanticRewrite">SemanticRewrite</a></div>
-          </div></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -347,7 +342,7 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a></dd></dl></div>
     </li><li name="scalafix.rule.Rule#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String"></a><a id="apply(scala.meta.Input,internal.config.ScalafixConfig):String"></a>
+      <a id="apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String"></a><a id="apply(scala.meta.Input,ScalafixConfig):String"></a>
       <span class="permalink">
       <a href="../../scalafix/rule/SemanticRule.html#apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String" title="Permalink">
         <i class="material-icons"></i>
@@ -358,7 +353,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="input">input: <span class="extype" name="org.langmeta.inputs.Aliases.Input">scala.meta.Input</span></span>, <span name="config">config: <span class="extype" name="scalafix.internal.config.ScalafixConfig">internal.config.ScalafixConfig</span> = <span class="symbol"><span class="name"><a href="../index.html">ScalafixConfig.default</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">apply</span><span class="params">(<span name="input">input: <span class="extype" name="org.langmeta.inputs.Aliases.Input">scala.meta.Input</span></span>, <span name="config">config: <span class="extype" name="scalafix.internal.config.ScalafixConfig">ScalafixConfig</span> = <span class="symbol"><span class="name"><a href="../index.html">ScalafixConfig.default</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a></dd></dl></div>
@@ -866,86 +861,7 @@ expensive indices.
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="scalafix.rule.Rule#andThen" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="andThen(other:scalafix.rule.Rule):scalafix.rule.Rule"></a><a id="andThen(Rule):Rule"></a>
-      <span class="permalink">
-      <a href="../../scalafix/rule/SemanticRule.html#andThen(other:scalafix.rule.Rule):scalafix.rule.Rule" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.5.0) Renamed to merge.">andThen</span><span class="params">(<span name="other">other: <a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a></span>)</span><span class="result">: <a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Rule.html" class="extype" name="scalafix.rule.Rule">Rule</a></dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.5.0)</i> Renamed to merge.</p></dd></dl></div>
-    </li><li name="scalafix.rule.SemanticRule#mirror" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mirror:scalafix.SemanticdbIndex"></a><a id="mirror:SemanticdbIndex"></a>
-      <span class="permalink">
-      <a href="../../scalafix/rule/SemanticRule.html#mirror:scalafix.SemanticdbIndex" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.5.0) Renamed to index.">mirror</span><span class="result">: <a href="../index.html#SemanticdbIndex=scalafix.util.SemanticdbIndex" class="extmbr" name="scalafix.SemanticdbIndex">SemanticdbIndex</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.5.0)</i> Renamed to index.</p></dd></dl></div>
-    </li><li name="scalafix.rule.SemanticRule#sctx" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sctx:scalafix.SemanticdbIndex"></a><a id="sctx:SemanticdbIndex"></a>
-      <span class="permalink">
-      <a href="../../scalafix/rule/SemanticRule.html#sctx:scalafix.SemanticdbIndex" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.5.0) Renamed to index.">sctx</span><span class="result">: <a href="../index.html#SemanticdbIndex=scalafix.util.SemanticdbIndex" class="extmbr" name="scalafix.SemanticdbIndex">SemanticdbIndex</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.5.0)</i> Renamed to index.</p></dd></dl></div>
-    </li><li name="scalafix.rule.SemanticRule#semanticCtx" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="semanticCtx:scalafix.SemanticdbIndex"></a><a id="semanticCtx:SemanticdbIndex"></a>
-      <span class="permalink">
-      <a href="../../scalafix/rule/SemanticRule.html#semanticCtx:scalafix.SemanticdbIndex" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.5.0) Renamed to index.">semanticCtx</span><span class="result">: <a href="../index.html#SemanticdbIndex=scalafix.util.SemanticdbIndex" class="extmbr" name="scalafix.SemanticdbIndex">SemanticdbIndex</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.5.0)</i> Renamed to index.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

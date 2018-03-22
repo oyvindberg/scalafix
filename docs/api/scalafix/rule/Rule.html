@@ -176,7 +176,7 @@ the <code>check</code> method. Example:</p><pre><span class="cmt">// example syn
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="SemanticRule.html" class="extype" name="scalafix.rule.SemanticRule">SemanticRule</a>, <a href="../rewrite/Rewrite.html" class="extype" name="scalafix.rewrite.Rewrite">Rewrite</a>, <a href="../rewrite/SemanticRewrite.html" class="extype" name="scalafix.rewrite.SemanticRewrite">SemanticRewrite</a></div>
+            <div class="subClasses hiddenContent"><a href="SemanticRule.html" class="extype" name="scalafix.rule.SemanticRule">SemanticRule</a></div>
           </div></div>
         
 
@@ -350,7 +350,7 @@ the <code>check</code> method. Example:</p><pre><span class="cmt">// example syn
       
       
     </li><li name="scalafix.rule.Rule#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String"></a><a id="apply(scala.meta.Input,internal.config.ScalafixConfig):String"></a>
+      <a id="apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String"></a><a id="apply(scala.meta.Input,ScalafixConfig):String"></a>
       <span class="permalink">
       <a href="../../scalafix/rule/Rule.html#apply(input:meta.Input,config:scalafix.internal.config.ScalafixConfig):String" title="Permalink">
         <i class="material-icons"></i>
@@ -361,7 +361,7 @@ the <code>check</code> method. Example:</p><pre><span class="cmt">// example syn
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="input">input: <span class="extype" name="org.langmeta.inputs.Aliases.Input">scala.meta.Input</span></span>, <span name="config">config: <span class="extype" name="scalafix.internal.config.ScalafixConfig">internal.config.ScalafixConfig</span> = <span class="symbol"><span class="name"><a href="../index.html">ScalafixConfig.default</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">apply</span><span class="params">(<span name="input">input: <span class="extype" name="org.langmeta.inputs.Aliases.Input">scala.meta.Input</span></span>, <span name="config">config: <span class="extype" name="scalafix.internal.config.ScalafixConfig">ScalafixConfig</span> = <span class="symbol"><span class="name"><a href="../index.html">ScalafixConfig.default</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       
@@ -869,29 +869,7 @@ expensive indices.
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="scalafix.rule.Rule#andThen" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="andThen(other:scalafix.rule.Rule):scalafix.rule.Rule"></a><a id="andThen(Rule):Rule"></a>
-      <span class="permalink">
-      <a href="../../scalafix/rule/Rule.html#andThen(other:scalafix.rule.Rule):scalafix.rule.Rule" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.5.0) Renamed to merge.">andThen</span><span class="params">(<span name="other">other: <a href="" class="extype" name="scalafix.rule.Rule">Rule</a></span>)</span><span class="result">: <a href="" class="extype" name="scalafix.rule.Rule">Rule</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.5.0)</i> Renamed to merge.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
