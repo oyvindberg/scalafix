@@ -71,34 +71,34 @@ for example expanded macros.</li>
 <h4 id="unlessinsideblock">UnlessInsideBlock</h4>
 
 <table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>safeBlock</code></td><td>Symbol</td><td>The symbol that indicates a 'safe' block.</td></tr><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>The unsafe symbols that are banned unless inside a 'safe' block</td></tr></tbody></table>
-<h4 id="disableconfig">DisableConfig</h4>
+<h4 id="disable-1">Disable</h4>
 
 <table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>symbols</code></td><td>List[Message[Symbol]]</td><td>List of symbols to disable if written explicitly in source. Does not report an error for inferred symbols in macro expanded code or implicits.</td></tr><tr><td><code>ifSynthetic</code></td><td>List[Message[Symbol]]</td><td>List of symbols to disable if inferred. Does not report an error for symbols written explicitly in source code.</td></tr><tr><td><code>unlessInside</code></td><td>List[UnlessInsideBlock]</td><td>List of symbols to disable unless they are in the given block.</td></tr></tbody></table>
 <h4 id="defaults-1">Defaults</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DisableConfig.symbols = []
-DisableConfig.ifSynthetic = []
-DisableConfig.unlessInside = []
+<div class="highlighter-rouge"><pre class="highlight"><code>Disable.symbols = []
+Disable.ifSynthetic = []
+Disable.unlessInside = []
 </code></pre>
 </div>
 
 <h4 id="examples-1">Examples</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DisableConfig.symbols = 
+<div class="highlighter-rouge"><pre class="highlight"><code>Disable.symbols = 
 [
   {
     symbol = "scala.Any.asInstanceOf"
     message = "use pattern-matching instead"
   }
 ]
-DisableConfig.ifSynthetic = 
+Disable.ifSynthetic = 
 [
   {
     symbol = "scala.Predef.any2stringadd"
     message = "use explicit toString be calling +"
   }
 ]
-DisableConfig.unlessInside = 
+Disable.unlessInside = 
 [
   {
     safeBlock = "scala.util.Try"
