@@ -7,6 +7,7 @@ Currently, Scalafix does not provide any IDE integrations with IntelliJ/ENSIME.<
       <li><a href="#verify-installation" id="markdown-toc-verify-installation">Verify installation</a></li>
       <li><a href="#example-project" id="markdown-toc-example-project">Example project</a></li>
       <li><a href="#settings-and-tasks" id="markdown-toc-settings-and-tasks">Settings and tasks</a></li>
+      <li><a href="#sbt-faq" id="markdown-toc-sbt-faq">FAQ</a></li>
     </ul>
   </li>
   <li><a href="#scalafix-cli" id="markdown-toc-scalafix-cli">scalafix-cli</a>    <ul>
@@ -162,6 +163,16 @@ contain the values below.</p>
   </tbody>
 </table>
 
+<h3 id="sbt-faq">FAQ</h3>
+
+<ul>
+  <li>How to exclude/add files that are processed by the <code class="highlighter-rouge">scalafix</code> task?</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>unmanagedSources.in(Compile, scalafix) := unmanagedSources.in(Compile).value.filter(file =&gt; ...)
+</code></pre>
+</div>
+
 <h2 id="scalafix-cli">scalafix-cli</h2>
 
 <p>The recommended way to install the scalafix command-line interface is with
@@ -195,7 +206,7 @@ wget -O scalafix https://github.com/scalacenter/scalafix/blob/master/scalafix?ra
 
 <h3 id="help">–help</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-73-56fa55f6
+<div class="highlighter-rouge"><pre class="highlight"><code>scalafix 0.6.0-M1-76-609c927d
 Usage: scalafix [options] [&lt;file&gt;...]
   --usage  
         Print usage and exit
@@ -439,10 +450,10 @@ Once you have found the version number, adapting the version number</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>// If using sbt-scalafix, add to project/plugins.sbt
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-73-56fa55f6-SNAPSHOT")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M1-76-609c927d-SNAPSHOT")
 
 // If using scalafix-cli, launch with coursier
-coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-73-56fa55f6-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
+coursier launch ch.epfl.scala:scalafix-cli_2.12.4:0.6.0-M1-76-609c927d-SNAPSHOT -r sonatype:snapshots --main scalafix.cli.Cli -- --help
 </code></pre>
 </div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalafix/highlight/highlight.pack.js"></script><script>hljs.configure({
